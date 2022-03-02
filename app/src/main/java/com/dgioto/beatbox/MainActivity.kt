@@ -1,4 +1,4 @@
-package com.example.beatbox
+package com.dgioto.beatbox
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

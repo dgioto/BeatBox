@@ -7,7 +7,7 @@ android {
     compileSdk 31
 
     defaultConfig {
-        applicationId "com.example.beatbox"
+        applicationId "com.dgioto.beatbox"
         minSdk 21
         targetSdk 31
         versionCode 1
