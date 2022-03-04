@@ -9,14 +9,20 @@ import androidx.recyclerview.widget.RecyclerView
 import com.dgioto.beatbox.databinding.ActivityMainBinding
 import com.dgioto.beatbox.databinding.ListItemSoundBinding
 
-//page 417
+//page 422
 
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var beatBox: BeatBox
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-    val binding: ActivityMainBinding =
-        DataBindingUtil.setContentView(this, R.layout.activity_main)
+        beatBox = BeatBox(assets)
+        beatBox.loadSounds()
+
+        val binding: ActivityMainBinding =
+            DataBindingUtil.setContentView(this, R.layout.activity_main)
 
         binding.recyclerView.apply {
             layoutManager = GridLayoutManager(context, 3)
