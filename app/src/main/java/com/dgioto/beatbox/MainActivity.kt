@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.dgioto.beatbox.databinding.ActivityMainBinding
 import com.dgioto.beatbox.databinding.ListItemSoundBinding
 
-//page 424
+//page 427
 
 class MainActivity : AppCompatActivity() {
 
