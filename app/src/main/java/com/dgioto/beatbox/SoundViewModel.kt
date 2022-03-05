@@ -7,5 +7,5 @@ class SoundViewModel {
 
     //добавление функций привязки
     val title: String?
-    get() = sound?.name
+        get() = sound?.name
 }

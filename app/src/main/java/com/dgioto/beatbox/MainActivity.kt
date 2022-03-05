@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.dgioto.beatbox.databinding.ActivityMainBinding
 import com.dgioto.beatbox.databinding.ListItemSoundBinding
 
-//page 427
+//page 429
 
 class MainActivity : AppCompatActivity() {
 
@@ -31,12 +31,23 @@ class MainActivity : AppCompatActivity() {
     }
 
     private inner class SoundHolder(binding: ListItemSoundBinding) :
-        RecyclerView.ViewHolder(binding.root)
+        RecyclerView.ViewHolder(binding.root){
+
+            init {
+                binding.viewModel = SoundViewModel()
+            }
+
+            fun bind(sound: Sound) {
+                binding.apply {
+                    viewModel?.sound = sound
+                    executePendingBindings()
+                }
+            }
+        }
 
     //Связываем SoundAdapter сосписком объектов Sound
     private inner class SoundAdapter(private val sound: List<Sound>) :
         RecyclerView.Adapter<SoundHolder>() {
-
 
         override fun getItemCount() = sound.size
 
@@ -50,7 +61,10 @@ class MainActivity : AppCompatActivity() {
             return  SoundHolder(binding)
         }
 
-        override fun onBindViewHolder(holder: SoundHolder, position: Int) { }
+        override fun onBindViewHolder(holder: SoundHolder, position: Int) {
+            val sound = sound[position]
+            holder.bind(sound)
+        }
     }
 
 
