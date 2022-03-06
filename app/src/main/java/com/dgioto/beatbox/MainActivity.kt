@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.dgioto.beatbox.databinding.ActivityMainBinding
 import com.dgioto.beatbox.databinding.ListItemSoundBinding
 
-//page 429
+//page 433
 
 class MainActivity : AppCompatActivity() {
 
@@ -34,12 +34,15 @@ class MainActivity : AppCompatActivity() {
         RecyclerView.ViewHolder(binding.root){
 
             init {
+                //Подключение модели представления
                 binding.viewModel = SoundViewModel()
             }
 
+            //Подключение модели представления
             fun bind(sound: Sound) {
                 binding.apply {
                     viewModel?.sound = sound
+                    //Приказ макету обновить себя немедленно
                     executePendingBindings()
                 }
             }
