@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private inner class SoundHolder(binding: ListItemSoundBinding) :
+    private inner class SoundHolder(private val binding: ListItemSoundBinding) :
         RecyclerView.ViewHolder(binding.root){
 
             init {
