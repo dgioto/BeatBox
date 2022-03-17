@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity() {
 
             init {
                 //Подключение модели представления
-                binding.viewModel = SoundViewModel()
+                binding.viewModel = SoundViewModel(beatBox)
             }
 
             //Подключение модели представления
