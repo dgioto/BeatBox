@@ -7,8 +7,14 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <!-- Стиль для кнопки Sound -->
     <style name="BeatBoxButton">
         <item name="android:background">@color/dark_blue</item>
+    </style>
+
+    <!-- Наследование стиля -->
+    <style name="BeatBoxButton.Strong">
+        <item name="android:textStyle">bold</item>
     </style>
 
 </resources>
