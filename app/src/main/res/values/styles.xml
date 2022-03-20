@@ -5,16 +5,13 @@
         <item name="colorPrimary">@color/red</item>
         <item name="colorPrimaryDark">@color/dark_red</item>
         <item name="colorAccent">@color/gray</item>
+
+        <item name="android:windowBackground">@color/soothing_blue</item>
+        <item name="buttonStyle">@style/BeatBoxButton</item>
     </style>
 
     <!-- Стиль для кнопки Sound -->
-    <style name="BeatBoxButton">
+    <style name="BeatBoxButton" parent="Widget.AppCompat.Button">
         <item name="android:background">@color/dark_blue</item>
     </style>
-
-    <!-- Наследование стиля -->
-    <style name="BeatBoxButton.Strong">
-        <item name="android:textStyle">bold</item>
-    </style>
-
 </resources>
