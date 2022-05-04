@@ -1,10 +1,8 @@
 package com.dgioto.beatbox
 
-import android.graphics.Picture
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.ViewGroup
-import android.widget.Button
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -41,22 +39,9 @@ class MainActivity : AppCompatActivity() {
     private inner class SoundHolder(private val binding: ListItemSoundBinding) :
         RecyclerView.ViewHolder(binding.root){
 
-        private var picture: Int = 0
-        private var name = ""
-        private lateinit var sound: Sound
-        private var button: Button = itemView.findViewById(R.id.button)
-
             init {
                 //Подключение модели представления
                 binding.viewModel = SoundViewModel(beatBox)
-                //Установка рисунка на кнопку
-                name = sound.name
-                picture = when(name) {
-                    "Волк" -> R.drawable.volk
-                    "Гуси" -> R.drawable.gus
-                    else -> 0
-                }
-                button.setBackgroundResource(picture)
             }
 
             //Подключение модели представления

@@ -4,6 +4,7 @@ import android.content.res.AssetFileDescriptor
 import android.content.res.AssetManager
 import android.media.SoundPool
 import android.util.Log
+import android.widget.Button
 import java.io.IOException
 
 private const val TAG = "BeatBox"
@@ -68,5 +69,20 @@ class BeatBox(private val assets: AssetManager) {
         //soundPool.load(...) возвращает индификатор типа int
         val soundId = soundPool.load(afd, 1)
         sound.soundId = soundId
+    }
+
+    //Установка рисунка на кнопку
+    private fun setPicture(){
+        var picture = 0
+        var soundName = ""
+        var button: Button = itemView.findViewById(R.id.button)
+
+        soundName = sounds
+        picture = when(soundName) {
+            "Волк" -> R.drawable.volk
+            "Гуси" -> R.drawable.gus
+            else -> 0
+        }
+        button.setBackgroundResource(picture)
     }
 }
