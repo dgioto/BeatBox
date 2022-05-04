@@ -17,6 +17,7 @@
 
         <!-- Привязка названия кнопки в android:text -->
         <Button
+            android:id="@+id/button"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_gravity="center"
