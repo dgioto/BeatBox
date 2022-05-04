@@ -7,8 +7,8 @@ import android.util.Log
 import java.io.IOException
 
 private const val TAG = "BeatBox"
-private const val SOUND_FOLDER = "sample_sounds"
-private const val MAX_SOUNDS = 5
+private const val SOUND_FOLDER = "animals_sounds"
+private const val MAX_SOUNDS = 1
 
 class BeatBox(private val assets: AssetManager) {
 
