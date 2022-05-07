@@ -70,19 +70,4 @@ class BeatBox(private val assets: AssetManager) {
         val soundId = soundPool.load(afd, 1)
         sound.soundId = soundId
     }
-
-    //Установка рисунка на кнопку
-    private fun setPicture(){
-        var picture = 0
-        var soundName = ""
-        var button: Button = itemView.findViewById(R.id.button)
-
-        soundName = sounds
-        picture = when(soundName) {
-            "Волк" -> R.drawable.volk
-            "Гуси" -> R.drawable.gus
-            else -> 0
-        }
-        button.setBackgroundResource(picture)
-    }
 }
