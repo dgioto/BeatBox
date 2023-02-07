@@ -1,3 +1,26 @@
 <resources>
     <string name="app_name">BeatBox</string>
+
+    <string-array name="animals">
+        <item>Бараны</item>
+        <item>Волк</item>
+        <item>Гуси</item>
+        <item>Индюк</item>
+        <item>Коза</item>
+        <item>Комар</item>
+        <item>Корова</item>
+        <item>Кошка</item>
+        <item>Кукушка</item>
+        <item>Курица</item>
+        <item>Лев</item>
+        <item>Лошадь</item>
+        <item>Мышь</item>
+        <item>Петух</item>
+        <item>Птицы</item>
+        <item>Свинья</item>
+        <item>Слон</item>
+        <item>Собаки</item>
+        <item>Утка</item>
+        <item>Хомяк</item>
+    </string-array>
 </resources>

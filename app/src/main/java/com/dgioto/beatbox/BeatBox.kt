@@ -4,7 +4,6 @@ import android.content.res.AssetFileDescriptor
 import android.content.res.AssetManager
 import android.media.SoundPool
 import android.util.Log
-import android.widget.Button
 import java.io.IOException
 
 private const val TAG = "BeatBox"
