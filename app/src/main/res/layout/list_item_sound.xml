@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="8dp">
 
-        <!-- Привязка названия кнопки в android:text -->
+        <!-- Привязка названия кнопки в android:text
         <Button
             android:id="@+id/button"
             android:layout_width="100dp"
@@ -24,5 +24,14 @@
             android:onClick="@{() -> viewModel.onButtonClicked()}"
             android:text="@{viewModel.title}"
             tools:text="Sound name" />
-    </FrameLayout>
-</layout>
+            -->
+        <!-- Привязка названия кнопки к viewModel-->
+                <ImageButton
+                    android:id="@+id/imageButton"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_gravity="center"
+                    android:onClick="@{() -> viewModel.onButtonClicked()}"
+                    app:srcCompat="@android:drawable/btn_star_big_on" />
+            </FrameLayout>
+        </layout>

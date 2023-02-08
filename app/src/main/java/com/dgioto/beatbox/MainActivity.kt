@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.ViewGroup
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.DataBindingUtil
@@ -18,7 +19,6 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var beatBox: BeatBox
 
-    lateinit var s1: Array<String>
     //присваивываем переменной массив фотографий животных
     private val images: Array<Int> = arrayOf(R.drawable.baran, R.drawable.volk, R.drawable.gus,
         R.drawable.induk, R.drawable.koza, R.drawable.komar, R.drawable.korova, R.drawable.koshka,
@@ -37,11 +37,8 @@ class MainActivity : AppCompatActivity() {
         binding.recyclerView.apply {
             layoutManager = GridLayoutManager(context, 3)
             //Звуки из BeatBox передаются функции onCreate(Bundle?)
-            adapter = SoundAdapter(beatBox.sounds, s1, images)
+            adapter = SoundAdapter(beatBox.sounds, images)
         }
-
-        //присваиваем переменной массив имен животных
-        s1 = resources.getStringArray(R.array.animals)
     }
 
     override fun onDestroy() {
@@ -51,10 +48,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     private inner class SoundHolder(
-        private val binding: ListItemSoundBinding,
-        val myText: TextView = itemView.finfViewById(R.id.myText),
-        val myImage: ImageView = itemView.finfViewById(R.id.myImageView)) :
-        RecyclerView.ViewHolder(binding.root) {
+        private val binding: ListItemSoundBinding) : RecyclerView.ViewHolder(binding.root) {
+
+        val myImage: ImageButton = itemView.findViewById(R.id.imageButton)
 
         init {
             //Подключение модели представления
@@ -75,7 +71,6 @@ class MainActivity : AppCompatActivity() {
     //Связываем SoundAdapter со списком объектов Sound
     private inner class SoundAdapter(
         private val sound: List<Sound>,
-        private val s1: Array<String>,
         private val img: Array<Int>
     ) : RecyclerView.Adapter<SoundHolder>() {
 
@@ -95,10 +90,7 @@ class MainActivity : AppCompatActivity() {
             val sound = sound[position]
             holder.bind(sound)
 
-            holder.myText.text = s1[position]
             holder.myImage.setImageResource(img[position])
         }
     }
-
-
 }
