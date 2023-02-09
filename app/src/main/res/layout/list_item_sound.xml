@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
     <!-- Объявление свойства для модели представления -->
     <data>
@@ -15,23 +13,13 @@
         android:layout_height="wrap_content"
         android:layout_margin="8dp">
 
-        <!-- Привязка названия кнопки в android:text
-        <Button
-            android:id="@+id/button"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_gravity="center"
-            android:onClick="@{() -> viewModel.onButtonClicked()}"
-            android:text="@{viewModel.title}"
-            tools:text="Sound name" />
-            -->
         <!-- Привязка названия кнопки к viewModel-->
                 <ImageButton
                     android:id="@+id/imageButton"
+                    android:background="@drawable/circle_button"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:layout_gravity="center"
-                    android:onClick="@{() -> viewModel.onButtonClicked()}"
-                    app:srcCompat="@android:drawable/btn_star_big_on" />
-            </FrameLayout>
-        </layout>
+                    android:onClick="@{() -> viewModel.onButtonClicked()}"/>
+    </FrameLayout>
+</layout>

@@ -1,12 +1,9 @@
 package com.dgioto.beatbox
 
-import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.ViewGroup
 import android.widget.ImageButton
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -90,7 +87,7 @@ class MainActivity : AppCompatActivity() {
             val sound = sound[position]
             holder.bind(sound)
 
-            holder.myImage.setImageResource(img[position])
+            holder.myImage.setBackgroundResource(img[position])
         }
     }
 }
