@@ -87,6 +87,7 @@ class MainActivity : AppCompatActivity() {
             val sound = sound[position]
             holder.bind(sound)
 
+            //добавляем в кнопку картинку по ее порядковому номеру в массиве
             holder.myImage.setBackgroundResource(img[position])
         }
     }
