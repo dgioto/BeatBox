@@ -26,7 +26,7 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_gravity="center"
-                android:contentDescription="imageButton"
+                android:contentDescription="@string/imagebutton"
                 android:onClick="@{() -> viewModel.onButtonClicked()}" />
         </androidx.cardview.widget.CardView>
 

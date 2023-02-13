@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">BeatBox</string>
+    <string name="app_name">AnimalSounds</string>
+    <string name="imagebutton">ImageButton</string>
 </resources>
