@@ -3,6 +3,7 @@ package com.dgioto.beatbox
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 
 class StartActivity : AppCompatActivity() {
@@ -19,6 +20,11 @@ class StartActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_start)
+
+        val version: TextView = findViewById(R.id.version)
+        //app version
+        val appVersionName = BuildConfig.VERSION_NAME
+        version.setText(appVersionName)
 
         // Запускаем MainActivity после паузы
         splashHandler.postDelayed(splashRunnable, SPLASH_DELAY)
