@@ -8,7 +8,9 @@ import androidx.appcompat.app.AppCompatActivity
 
 class StartActivity : AppCompatActivity() {
 
-    private val SPLASH_DELAY: Long = 5000 // Задержка в N секунд
+    private val splashDelay: Long = 5000 // Задержка в N секунд
+
+    private lateinit var beatBox: BeatBox
 
     private val splashHandler = Handler()
     private val splashRunnable = Runnable {
@@ -24,14 +26,17 @@ class StartActivity : AppCompatActivity() {
         val version: TextView = findViewById(R.id.version)
         //app version
         val appVersionName = BuildConfig.VERSION_NAME
-        version.setText(appVersionName)
+        version.text = appVersionName
 
         // Запускаем MainActivity после паузы
-        splashHandler.postDelayed(splashRunnable, SPLASH_DELAY)
+        splashHandler.postDelayed(splashRunnable, splashDelay)
+
+        beatBox = BeatBox(assets)
     }
 
     override fun onDestroy() {
         super.onDestroy()
+        beatBox.release()
         // Очищаем задачи из Handler для предотвращения утечки памяти
         splashHandler.removeCallbacks(splashRunnable)
     }
