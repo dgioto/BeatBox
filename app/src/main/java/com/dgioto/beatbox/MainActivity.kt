@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity() {
     private val images: Array<Int> = arrayOf(R.drawable.baran, R.drawable.volk, R.drawable.gus,
         R.drawable.induk, R.drawable.koza, R.drawable.komar, R.drawable.korova, R.drawable.koshka,
         R.drawable.kukushka, R.drawable.kurica, R.drawable.lev, R.drawable.loshad,
-        R.drawable.mish, R.drawable.petuh, R.drawable.ptiza, R.drawable.sviniya,
+        R.drawable.mish, R.drawable.petuh, R.drawable.ptiza, R.drawable.sverchek, R.drawable.sviniya,
         R.drawable.slon, R.drawable.sobaka, R.drawable.utka, R.drawable.homyak)
 
     override fun onCreate(savedInstanceState: Bundle?) {
