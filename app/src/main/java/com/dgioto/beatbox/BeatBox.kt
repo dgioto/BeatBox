@@ -3,6 +3,7 @@ package com.dgioto.beatbox
 import android.content.res.AssetFileDescriptor
 import android.content.res.AssetManager
 import android.media.SoundPool
+import android.os.Handler
 import android.util.Log
 import java.io.IOException
 
@@ -33,6 +34,44 @@ class BeatBox(private val assets: AssetManager) {
     fun release(){
         soundPool.release()
     }
+
+//    //получить список активов
+//    private fun loadSounds(): List<Sound> {
+//        val handler = Handler()
+//
+//        Thread {
+//            val soundNames: Array<String>
+//
+//            try {
+//                soundNames = assets.list(SOUND_FOLDER)!!
+//            } catch (e: Exception) {
+//                Log.e(TAG, "Could not list assets", e)
+//                return@Thread
+//            }
+//
+//            //строим список объектов Sound
+//            val sounds = mutableListOf<Sound>()
+//            soundNames.forEach { filename ->
+//                val assetPath = "$SOUND_FOLDER/$filename"
+//                val sound = Sound(assetPath)
+//
+//                try {
+//                    //загрузка всех звуков
+//                    load(sound)
+//                    sounds.add(sound)
+//                } catch (ioe: IOException) {
+//                    Log.e(TAG, "Could not load sound $filename", ioe)
+//                }
+//            }
+//
+//            handler.post {
+//                // Обновление пользовательского интерфейса или выполнение других действий
+//                // с загруженными звуками
+//            }
+//        }.start()
+//
+//        return emptyList() // Возвращаем пустой список в качестве временного значения
+//    }
 
     //получить список активов
     private fun loadSounds(): List<Sound>{

@@ -6,9 +6,9 @@ import android.os.Handler
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 
-class StartActivity : AppCompatActivity() {
+private const val SPLASH_DELAY: Long = 5000 // Задержка в N секунд
 
-    private val splashDelay: Long = 5000 // Задержка в N секунд
+class StartActivity : AppCompatActivity() {
 
     private lateinit var beatBox: BeatBox
 
@@ -28,10 +28,10 @@ class StartActivity : AppCompatActivity() {
         val appVersionName = BuildConfig.VERSION_NAME
         version.text = appVersionName
 
-        // Запускаем MainActivity после паузы
-        splashHandler.postDelayed(splashRunnable, splashDelay)
-
         beatBox = BeatBox(assets)
+
+        // Запускаем MainActivity после паузы
+        splashHandler.postDelayed(splashRunnable, SPLASH_DELAY)
     }
 
     override fun onDestroy() {
