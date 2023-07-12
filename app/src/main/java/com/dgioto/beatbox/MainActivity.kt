@@ -50,7 +50,11 @@ class MainActivity : AppCompatActivity() {
 
         init {
             //Подключение модели представления
-            binding.viewModel = SoundViewModel(beatBox)
+            binding.apply {
+                viewModel = SoundViewModel(beatBox).apply {
+                    view = itemView // Присвоение значения view
+                }
+            }
         }
 
         //Подключение модели представления
@@ -62,7 +66,6 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
-
 
     //Связываем SoundAdapter со списком объектов Sound
     private inner class SoundAdapter(
