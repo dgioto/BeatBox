@@ -1,16 +1,13 @@
 package com.dgioto.beatbox
 
-import android.view.View
-import androidx.core.view.ViewCompat.animate
-import androidx.core.view.ViewPropertyAnimatorCompat
-import androidx.interpolator.view.animation.FastOutSlowInInterpolator
+import android.view.animation.AnimationUtils
+import android.widget.Button
+import android.widget.ImageButton
 import androidx.lifecycle.MutableLiveData
 
-class SoundViewModel(private val beatBox: BeatBox) {
+class SoundViewModel(private val beatBox: BeatBox, private val imageButton: ImageButton) {
 
     val title: MutableLiveData<String?> = MutableLiveData()
-    var isImageScaled = false
-    var view: View? = null
 
     var sound: Sound? = null
         set(sound) {
@@ -23,8 +20,9 @@ class SoundViewModel(private val beatBox: BeatBox) {
         sound?.let {
             beatBox.play(it)
         }
-        if (!isImageScaled) animate(view!!).scaleX(1.1f).scaleY(1.1f).setDuration(500);
-        if (isImageScaled) animate(view!!).scaleX(1f).scaleY(1f).setDuration(500);
-        isImageScaled = !isImageScaled;
+        // Загрузить анимацию из XML-файла
+        val scaleAnimation = AnimationUtils.loadAnimation(imageButton.context, R.anim.scale_animation)
+        // Применить анимацию к кнопке
+        imageButton.startAnimation(scaleAnimation)
     }
 }

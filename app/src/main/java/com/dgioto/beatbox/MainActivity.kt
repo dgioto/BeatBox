@@ -51,9 +51,7 @@ class MainActivity : AppCompatActivity() {
         init {
             //Подключение модели представления
             binding.apply {
-                viewModel = SoundViewModel(beatBox).apply {
-                    view = itemView // Присвоение значения view
-                }
+                binding.viewModel = SoundViewModel(beatBox, myImage)
             }
         }
 
