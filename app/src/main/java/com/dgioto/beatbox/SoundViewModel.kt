@@ -23,8 +23,19 @@ class SoundViewModel(private val beatBox: BeatBox) {
         sound?.let {
             beatBox.play(it)
         }
-        if (!isImageScaled) animate(view!!).scaleX(1.1f).scaleY(1.1f).setDuration(500);
-        if (isImageScaled) animate(view!!).scaleX(1f).scaleY(1f).setDuration(500);
-        isImageScaled = !isImageScaled;
+
+        val animator = animate(view!!)
+            .scaleX(1.5f)
+            .scaleY(1.5f)
+            .setDuration(1000)
+            .withEndAction {
+                animate(view!!)
+                    .scaleX(1f)
+                    .scaleY(1f)
+                    .setDuration(1000)
+                    .interpolator = FastOutSlowInInterpolator()
+            }
+        animator.start()
+        isImageScaled = !isImageScaled
     }
 }
