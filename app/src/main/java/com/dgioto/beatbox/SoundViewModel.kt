@@ -1,10 +1,13 @@
 package com.dgioto.beatbox
 
+import android.os.Handler
+import android.os.Looper
 import android.view.View
+
 import androidx.core.view.ViewCompat.animate
-import androidx.core.view.ViewPropertyAnimatorCompat
 import androidx.interpolator.view.animation.FastOutSlowInInterpolator
 import androidx.lifecycle.MutableLiveData
+
 
 class SoundViewModel(private val beatBox: BeatBox) {
 
@@ -20,20 +23,26 @@ class SoundViewModel(private val beatBox: BeatBox) {
         }
 
     fun onButtonClicked() {
-        sound?.let {
-            beatBox.play(it)
-        }
 
+        //Анимация кнопки для увеличения ее размера
         val animator = animate(view!!)
             .scaleX(1.5f)
             .scaleY(1.5f)
             .setDuration(1000)
             .withEndAction {
-                animate(view!!)
-                    .scaleX(1f)
-                    .scaleY(1f)
-                    .setDuration(1000)
-                    .interpolator = FastOutSlowInInterpolator()
+                //проигрыввание звука
+                sound?.let {
+                    beatBox.play(it)
+                }
+
+                //Задержка перед уменьшением кнопки на 2 секунды
+                Handler(Looper.getMainLooper()).postDelayed({
+                    animate(view!!)
+                        .scaleX(1f)
+                        .scaleY(1f)
+                        .setDuration(1000)
+                        .interpolator = FastOutSlowInInterpolator()
+                }, 2000)
             }
         animator.start()
         isImageScaled = !isImageScaled
