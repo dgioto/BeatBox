@@ -23,6 +23,10 @@ class SoundViewModel(private val beatBox: BeatBox) {
         }
 
     fun onButtonClicked() {
+        //проигрыввание звука
+        sound?.let {
+            beatBox.play(it)
+        }
 
         //Анимация кнопки для увеличения ее размера
         val animator = animate(view!!)
@@ -30,11 +34,6 @@ class SoundViewModel(private val beatBox: BeatBox) {
             .scaleY(1.5f)
             .setDuration(1000)
             .withEndAction {
-                //проигрыввание звука
-                sound?.let {
-                    beatBox.play(it)
-                }
-
                 //Задержка перед уменьшением кнопки на 2 секунды
                 Handler(Looper.getMainLooper()).postDelayed({
                     animate(view!!)
@@ -42,7 +41,7 @@ class SoundViewModel(private val beatBox: BeatBox) {
                         .scaleY(1f)
                         .setDuration(1000)
                         .interpolator = FastOutSlowInInterpolator()
-                }, 2000)
+                }, 1000)
             }
         animator.start()
         isImageScaled = !isImageScaled
