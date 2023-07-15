@@ -12,7 +12,7 @@ private const val SPLASH_DELAY: Long = 5000 // Задержка в N секун�
 
 class StartActivity : AppCompatActivity() {
 
-    private lateinit var beatBox: BeatBox
+//    private lateinit var beatBoxLoad: BeatBoxLoad
     private lateinit var progressBar: ProgressBar
 
     private val splashHandler = Handler()
@@ -35,7 +35,7 @@ class StartActivity : AppCompatActivity() {
         val appVersionName = BuildConfig.VERSION_NAME
         version.text = appVersionName
 
-        beatBox = BeatBox(assets)
+//        beatBoxLoad = BeatBoxLoad(assets)
 
         // Показать ProgressBar
         progressBar.visibility = View.VISIBLE
@@ -46,7 +46,6 @@ class StartActivity : AppCompatActivity() {
 
     override fun onDestroy() {
         super.onDestroy()
-        beatBox.release()
         // Очищаем задачи из Handler для предотвращения утечки памяти
         splashHandler.removeCallbacks(splashRunnable)
     }
