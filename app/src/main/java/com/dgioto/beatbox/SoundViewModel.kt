@@ -1,7 +1,5 @@
 package com.dgioto.beatbox
 
-import android.os.Handler
-import android.os.Looper
 import android.view.View
 
 import androidx.core.view.ViewCompat.animate
@@ -11,7 +9,7 @@ import androidx.lifecycle.MutableLiveData
 class SoundViewModel(private val beatBox: BeatBox) {
 
     val title: MutableLiveData<String?> = MutableLiveData()
-    var isImageScaled = false
+    private var isImageScaled = false
     var view: View? = null
 
     var sound: Sound? = null
