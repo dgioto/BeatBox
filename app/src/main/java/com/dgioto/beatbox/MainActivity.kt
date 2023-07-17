@@ -1,5 +1,6 @@
 package com.dgioto.beatbox
 
+import android.media.SoundPool
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.ViewGroup
@@ -12,9 +13,13 @@ import com.dgioto.beatbox.databinding.ListItemSoundBinding
 
 //Филипс_Android.Программирование для проффесионалов_page_410
 
+private const val MAX_SOUNDS = 1
+
 class MainActivity : AppCompatActivity() {
 
     private lateinit var beatBox: BeatBox
+    private lateinit var beatBoxLoad: BeatBoxLoad
+    private lateinit var soundPool: SoundPool
 
     //присваивываем переменной массив фотографий животных
     private val images: Array<Int> = arrayOf(R.drawable.baran, R.drawable.volk, R.drawable.gus,
@@ -26,7 +31,13 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        beatBox = BeatBox(assets)
+        //Создание объекта SoundPool для воспроизведения звуков
+        soundPool = SoundPool.Builder()
+            .setMaxStreams(MAX_SOUNDS)
+            .build()
+
+        beatBox = BeatBox(soundPool)
+        beatBoxLoad = BeatBoxLoad(assets, soundPool)
 
         val binding: ActivityMainBinding =
             DataBindingUtil.setContentView(this, R.layout.activity_main)
@@ -34,7 +45,7 @@ class MainActivity : AppCompatActivity() {
         binding.recyclerView.apply {
             layoutManager = GridLayoutManager(context, 3)
             //Звуки из BeatBox передаются функции onCreate(Bundle?)
-            adapter = SoundAdapter(beatBox.sounds, images)
+            adapter = SoundAdapter(beatBoxLoad.sounds, images)
         }
     }
 
