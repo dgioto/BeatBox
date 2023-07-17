@@ -1,7 +1,5 @@
 package com.dgioto.beatbox
 
-import android.graphics.BitmapFactory
-import android.graphics.drawable.BitmapDrawable
 import android.media.SoundPool
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -12,7 +10,8 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.dgioto.beatbox.databinding.ActivityMainBinding
 import com.dgioto.beatbox.databinding.ListItemSoundBinding
-import java.io.InputStream
+import com.squareup.picasso.Picasso
+import com.squareup.picasso.RequestCreator
 
 //Филипс_Android.Программирование для проффесионалов_page_410
 
@@ -26,27 +25,27 @@ class MainActivity : AppCompatActivity() {
 
     //присваивываем переменной массив фотографий животных
     private val images: Array<String> = arrayOf(
-        "animals_pictures/baran.jpg",
-        "animals_pictures/volk.jpg",
-        "animals_pictures/gus.jpg",
-        "animals_pictures/induk.jpg",
-        "animals_pictures/koza.jpg",
-        "animals_pictures/komar.jpg",
-        "animals_pictures/korova.jpg",
-        "animals_pictures/koshka.jpg",
-        "animals_pictures/kukushka.jpg",
-        "animals_pictures/kurica.jpg",
-        "animals_pictures/lev.jpg",
-        "animals_pictures/loshad.jpg",
-        "animals_pictures/mish.jpg",
-        "animals_pictures/petuh.jpg",
-        "animals_pictures/ptiza.jpg",
-        "animals_pictures/sverchek.jpg",
-        "animals_pictures/sviniya.jpg",
-        "animals_pictures/slon.jpg",
-        "animals_pictures/sobaka.jpg",
-        "animals_pictures/utka.jpg",
-        "animals_pictures/homyak.jpg")
+        "baran.jpg",
+        "volk.jpg",
+        "gus.jpg",
+        "induk.jpg",
+        "koza.jpg",
+        "komar.jpg",
+        "korova.jpg",
+        "koshka.jpg",
+        "kukushka.jpg",
+        "kurica.jpg",
+        "lev.jpg",
+        "loshad.jpg",
+        "mish.jpg",
+        "petuh.jpg",
+        "ptiza.jpg",
+        "sverchek.jpg",
+        "sviniya.jpg",
+        "slon.jpg",
+        "sobaka.jpg",
+        "utka.jpg",
+        "homyak.jpg")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -123,12 +122,14 @@ class MainActivity : AppCompatActivity() {
             val sound = sound[position]
             holder.bind(sound)
 
-            //добавляем в кнопку картинку по ее порядковому номеру в массиве
-            val imagePath = img[position]
-            val inputStream: InputStream = holder.itemView.context.assets.open(imagePath)
-            val bitmap = BitmapFactory.decodeStream(inputStream)
-            val drawable = BitmapDrawable(holder.itemView.context.resources, bitmap)
-            holder.myImage.setImageDrawable(drawable)
+            // Добавляем в кнопку картинку по ее порядковому номеру в массиве
+            // Загружаем изображение из папки assets с помощью Picasso и устанавливаем его в ImageButton
+            val imageName = img[position]
+            val imagePath = "file:///android_asset/animals_pictures/$imageName"
+
+            // Загружаем изображение и растягиваем его на всю кнопку
+            val picasso: RequestCreator = Picasso.get().load(imagePath)
+            picasso.fit().centerCrop().into(holder.myImage)
         }
     }
 }
