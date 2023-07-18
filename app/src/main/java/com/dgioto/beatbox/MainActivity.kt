@@ -10,10 +10,11 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.dgioto.beatbox.databinding.ActivityMainBinding
 import com.dgioto.beatbox.databinding.ListItemSoundBinding
+
 import com.squareup.picasso.Picasso
 import com.squareup.picasso.RequestCreator
 
-//Филипс_Android.Программирование для проффесионалов_page_410
+//Phillips B., Stewart Ch. - Android Programming: The Big Nerd Ranch Guide, page 410
 
 private const val MAX_SOUNDS = 1
 
@@ -23,7 +24,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var beatBoxLoad: BeatBoxLoad
     private lateinit var soundPool: SoundPool
 
-    //присваивываем переменной массив фотографий животных
+    //assign an array of animal photos to a variable
     private val images: Array<String> = arrayOf(
         "baran.jpg",
         "volk.jpg",
@@ -50,7 +51,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        //Создание объекта SoundPool для воспроизведения звуков
+        //Creating a SoundPool object to play sounds
         soundPool = SoundPool.Builder()
             .setMaxStreams(MAX_SOUNDS)
             .build()
@@ -63,7 +64,7 @@ class MainActivity : AppCompatActivity() {
 
         binding.recyclerView.apply {
             layoutManager = GridLayoutManager(context, 3)
-            //Звуки из BeatBox передаются функции onCreate(Bundle?)
+            //Sounds from the BeatBox are passed to the onCreate(Bundle?) function
             adapter = SoundAdapter(beatBoxLoad.sounds, images)
         }
     }
@@ -79,7 +80,7 @@ class MainActivity : AppCompatActivity() {
         val myImage: ImageButton = itemView.findViewById(R.id.imageButton)
 
         init {
-            //Подключение модели представления
+            //Connecting the view model
             binding.apply {
                 viewModel = SoundViewModel(beatBox).apply {
                     view = itemView // Присвоение значения view
@@ -87,17 +88,17 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        //Подключение модели представления
+        //Connecting the view model
         fun bind(sound: Sound) {
             binding.apply {
                 viewModel?.sound = sound
-                //Приказ макету обновить себя немедленно
+                //Telling the layout to update itself immediately
                 executePendingBindings()
             }
         }
     }
 
-    //Связываем SoundAdapter со списком объектов Sound
+    //Associating the SoundAdapter with a list of Sound objects
     private inner class SoundAdapter(
         private val sound: List<Sound>,
         private val img: Array<String>
@@ -122,12 +123,12 @@ class MainActivity : AppCompatActivity() {
             val sound = sound[position]
             holder.bind(sound)
 
-            // Добавляем в кнопку картинку по ее порядковому номеру в массиве
-            // Загружаем изображение из папки assets с помощью Picasso и устанавливаем его в ImageButton
+            // Add an image to the button by its serial number in the array
+            // Load image from assets folder with Picasso and set it to ImageButton
             val imageName = img[position]
             val imagePath = "file:///android_asset/animals_pictures/$imageName"
 
-            // Загружаем изображение и растягиваем его на всю кнопку
+            // Upload an image and stretch it to fit the entire button
             val picasso: RequestCreator = Picasso.get().load(imagePath)
             picasso.fit().centerCrop().into(holder.myImage)
         }
