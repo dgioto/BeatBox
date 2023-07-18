@@ -26,27 +26,27 @@ class MainActivity : AppCompatActivity() {
 
     //assign an array of animal photos to a variable
     private val images: Array<String> = arrayOf(
-        "baran.jpg",
-        "volk.jpg",
-        "gus.jpg",
-        "induk.jpg",
-        "koza.jpg",
-        "komar.jpg",
-        "korova.jpg",
-        "koshka.jpg",
-        "kukushka.jpg",
-        "kurica.jpg",
-        "lev.jpg",
-        "loshad.jpg",
-        "mish.jpg",
-        "petuh.jpg",
-        "ptiza.jpg",
-        "sverchek.jpg",
-        "sviniya.jpg",
-        "slon.jpg",
-        "sobaka.jpg",
-        "utka.jpg",
-        "homyak.jpg")
+        "bird.jpg",
+        "cat.jpg",
+        "chicken.jpg",
+        "cow.jpg",
+        "cricket.jpg",
+        "cuckoo.jpg",
+        "dog.jpg",
+        "duck.jpg",
+        "elephant.jpg",
+        "goat.jpg",
+        "goose.jpg",
+        "hamster.jpg",
+        "horse.jpg",
+        "lion.jpg",
+        "mosquito.jpg",
+        "mouse.jpg",
+        "pig.jpg",
+        "ram.jpg",
+        "rooster.jpg",
+        "turkey.jpg",
+        "wolf.jpg")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
