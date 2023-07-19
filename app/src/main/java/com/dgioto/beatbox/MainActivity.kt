@@ -83,7 +83,7 @@ class MainActivity : AppCompatActivity() {
             //Connecting the view model
             binding.apply {
                 viewModel = SoundViewModel(beatBox).apply {
-                    view = itemView // Присвоение значения view
+                    view = itemView //Assigning a value to a view
                 }
             }
         }
