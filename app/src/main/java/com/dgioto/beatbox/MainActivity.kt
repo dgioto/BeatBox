@@ -1,18 +1,19 @@
 package com.dgioto.beatbox
 
 import android.media.SoundPool
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.dgioto.beatbox.databinding.ActivityMainBinding
 import com.dgioto.beatbox.databinding.ListItemSoundBinding
-
 import com.squareup.picasso.Picasso
 import com.squareup.picasso.RequestCreator
+
 
 //Phillips B., Stewart Ch. - Android Programming: The Big Nerd Ranch Guide, page 410
 
@@ -50,6 +51,11 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        //Hide the navigation bar and set the activity to full screen
+        window.decorView.systemUiVisibility = (View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                or View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
+                or View.SYSTEM_UI_FLAG_FULLSCREEN)
 
         //Creating a SoundPool object to play sounds
         soundPool = SoundPool.Builder()
