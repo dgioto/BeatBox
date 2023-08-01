@@ -14,7 +14,6 @@ import com.dgioto.beatbox.databinding.ListItemSoundBinding
 import com.squareup.picasso.Picasso
 import com.squareup.picasso.RequestCreator
 
-
 //Phillips B., Stewart Ch. - Android Programming: The Big Nerd Ranch Guide, page 410
 
 private const val MAX_SOUNDS = 1
