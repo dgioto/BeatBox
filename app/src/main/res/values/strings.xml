@@ -3,4 +3,6 @@
     <string name="image_button" translatable="false">ImageButton</string>
     <string name="year" translatable="false">(c)2023</string>
     <string name="version_message" translatable="false">1.0.0</string>
+    <string name="qr_code">QR code</string>
+    <string name="qr_code_text">Scan QR code with QR code reader app</string>
 </resources>

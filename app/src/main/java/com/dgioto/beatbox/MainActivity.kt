@@ -1,10 +1,16 @@
 package com.dgioto.beatbox
 
+import android.graphics.BitmapFactory
 import android.media.SoundPool
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
+import android.widget.ImageView
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.GridLayoutManager
@@ -72,6 +78,38 @@ class MainActivity : AppCompatActivity() {
             //Sounds from the BeatBox are passed to the onCreate(Bundle?) function
             adapter = SoundAdapter(beatBoxLoad.sounds, images)
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.main_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.qr_code -> {
+                showQrCodeDialog()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+
+    private fun showQrCodeDialog() {
+        // Create a AlertDialog to show the QR code image
+        val qrCodeImage = R.drawable.qr_code
+        val qrCodeBitmap = BitmapFactory.decodeResource(resources, qrCodeImage)
+
+        val dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_qr_code, null)
+        val qrCodeImageView = dialogView.findViewById<ImageView>(R.id.qrCodeImageView)
+        qrCodeImageView.setImageBitmap(qrCodeBitmap)
+
+        val builder = AlertDialog.Builder(this)
+        builder.setView(dialogView)
+        builder.setTitle(getString(R.string.qr_code))
+        builder.setMessage(getString(R.string.qr_code_text))
+        builder.setPositiveButton("ОК") { dialog, _ -> dialog.dismiss() }
+        builder.show()
     }
 
     override fun onDestroy() {

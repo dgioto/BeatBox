@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Звуки тварин</string>
+    <string name="qr_code">QR code</string>
+    <string name="qr_code_text">Відскануйте QR-код за допомогою програми для читання QR-кодів</string>
 </resources>
