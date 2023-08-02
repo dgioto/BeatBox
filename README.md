@@ -4,7 +4,7 @@ A simple open source animal sounds app for Android.
 
 Tap animal picture buttons and enjoy animal sounds in your Android phone.
 
-![screenshot_small](https://github.com/dgioto/BeatBox/assets/59308650/a14e97be-d242-408d-b7e6-554f1b57312d)
+![screenshot_small](https://github.com/dgioto/BeatBox/assets/59308650/8a696ae9-684c-4f33-a96e-7bd1d3d281f0)
 
 ## Link to google play market:
 https://play.google.com/store/apps/details?id=com.dgioto.beatbox&hl=ru&gl=US
