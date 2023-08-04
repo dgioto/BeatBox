@@ -1,5 +1,6 @@
 package com.dgioto.beatbox
 
+import android.content.res.Configuration
 import android.graphics.BitmapFactory
 import android.media.SoundPool
 import android.os.Bundle
@@ -25,6 +26,10 @@ import com.squareup.picasso.RequestCreator
 private const val MAX_SOUNDS = 1
 
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var myLayoutManager: GridLayoutManager
+    private val COLUMN_COUNT_PORTRAIT = 3
+    private val COLUMN_COUNT_LANDSCAPE = 6
 
     private lateinit var beatBox: BeatBox
     private lateinit var beatBoxLoad: BeatBoxLoad
@@ -74,9 +79,19 @@ class MainActivity : AppCompatActivity() {
             DataBindingUtil.setContentView(this, R.layout.activity_main)
 
         binding.recyclerView.apply {
-            layoutManager = GridLayoutManager(context, 3)
+            myLayoutManager = GridLayoutManager(context, COLUMN_COUNT_PORTRAIT)
+            layoutManager = myLayoutManager
             //Sounds from the BeatBox are passed to the onCreate(Bundle?) function
             adapter = SoundAdapter(beatBoxLoad.sounds, images)
+        }
+    }
+
+    override fun onConfigurationChanged(newConfig: Configuration) {
+        super.onConfigurationChanged(newConfig)
+        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            myLayoutManager.spanCount = COLUMN_COUNT_LANDSCAPE
+        } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT) {
+            myLayoutManager.spanCount = COLUMN_COUNT_PORTRAIT
         }
     }
 
