@@ -8,7 +8,7 @@
         android:layout_height="match_parent"
         android:scrollbars="vertical"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-        app:spanCount="3"
+        app:spanCount="6"
         android:fitsSystemWindows="true"
         android:background="@drawable/gradient_background" />
 </layout>
