@@ -6,4 +6,9 @@
         android:title="@string/qr_code"
         android:icon="@drawable/baseline_qr_code_24"
         app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/share"
+        android:title="@string/share"
+        android:icon="@drawable/baseline_share_24"
+        app:showAsAction="ifRoom" />
 </menu>

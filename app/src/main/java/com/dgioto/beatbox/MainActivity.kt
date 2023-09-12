@@ -1,5 +1,6 @@
 package com.dgioto.beatbox
 
+import android.content.Intent
 import android.graphics.BitmapFactory
 import android.media.SoundPool
 import android.os.Bundle
@@ -88,14 +89,21 @@ class MainActivity : AppCompatActivity(), LifecycleOwner {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.qr_code -> {
-                showQrCodeDialog()
+                showQRCodeDialog()
+                true
+            }
+            R.id.share -> {
+                val intent = Intent(Intent.ACTION_SEND)
+                intent.type = "text/plain"
+                intent.putExtra(Intent.EXTRA_TEXT, "https://play.google.com/store/apps/details?id=com.dgioto.beatbox&amp;hl=ru&amp;gl=US")
+                startActivity(Intent.createChooser(intent, ""))
                 true
             }
             else -> super.onOptionsItemSelected(item)
         }
     }
 
-    private fun showQrCodeDialog() {
+    private fun showQRCodeDialog() {
         // Create a AlertDialog to show the QR code image
         val qrCodeImage = R.drawable.qr_code
         val qrCodeBitmap = BitmapFactory.decodeResource(resources, qrCodeImage)
