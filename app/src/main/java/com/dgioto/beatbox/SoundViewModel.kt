@@ -8,6 +8,8 @@ import androidx.core.view.ViewCompat.animate
 import androidx.interpolator.view.animation.FastOutSlowInInterpolator
 import androidx.lifecycle.MutableLiveData
 
+private const val DELAY_MILLISECONDS : Long = 1000
+
 class SoundViewModel(private val beatBox: BeatBox) {
 
     val title: MutableLiveData<String?> = MutableLiveData()
@@ -33,14 +35,14 @@ class SoundViewModel(private val beatBox: BeatBox) {
             .scaleY(1.5f)
             .setDuration(1000)
             .withEndAction {
-                //Delay before decreasing the button by 2 seconds
+                //Delay before decreasing the button by N seconds
                 Handler(Looper.getMainLooper()).postDelayed({
                     animate(view!!)
                         .scaleX(1f)
                         .scaleY(1f)
                         .setDuration(1000)
                         .interpolator = FastOutSlowInInterpolator()
-                }, 1000)
+                }, DELAY_MILLISECONDS)
             }
         animator.start()
         isImageScaled = !isImageScaled
