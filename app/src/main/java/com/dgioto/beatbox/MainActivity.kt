@@ -3,6 +3,7 @@ package com.dgioto.beatbox
 import android.content.Intent
 import android.graphics.BitmapFactory
 import android.media.SoundPool
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.Menu
@@ -98,8 +99,17 @@ class MainActivity : AppCompatActivity(), LifecycleOwner {
             R.id.share -> {
                 val intent = Intent(Intent.ACTION_SEND)
                 intent.type = "text/plain"
-                intent.putExtra(Intent.EXTRA_TEXT, "https://play.google.com/store/apps/details?id=com.dgioto.beatbox&amp;hl=ru&amp;gl=US")
+                intent.putExtra(Intent.EXTRA_TEXT, R.string.share_google_play)
                 startActivity(Intent.createChooser(intent, ""))
+                true
+            }
+            R.id.rate_the_app -> {
+                startActivity(
+                    Intent(
+                        Intent.ACTION_VIEW,
+                        Uri.parse(getString(R.string.google_play_url))
+                    )
+                )
                 true
             }
             else -> super.onOptionsItemSelected(item)
