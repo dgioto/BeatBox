@@ -1,15 +1,21 @@
 *.iml
 .gradle
 /local.properties
-/.idea/caches
-/.idea/libraries
-/.idea/modules.xml
-/.idea/workspace.xml
-/.idea/navEditor.xml
-/.idea/assetWizardSettings.xml
+/.idea/
+.kotlin
 .DS_Store
 /build
 /captures
 .externalNativeBuild
 .cxx
-local.properties
+
+# Кэши и логи
+*.log
+build/
+
+# Специфично для Android Studio
+*.stacktrace
+/captures/
+
+# Google Services
+# google-services.json (раскомментируй, если используешь Firebase и не хочешь шарить ключ)
