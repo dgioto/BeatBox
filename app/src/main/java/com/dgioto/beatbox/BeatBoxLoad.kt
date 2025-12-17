@@ -23,7 +23,7 @@ class BeatBoxLoad(private val assets: AssetManager, private val soundPool: Sound
         val soundNames: Array<String>
 
         try {
-            soundNames = assets.list(SOUND_FOLDER)!!
+            soundNames = assets.list(SOUND_FOLDER) ?: emptyArray()
         } catch (e: Exception){
             Log.e(TAG, "Could not list assets", e)
             return emptyList()
@@ -47,9 +47,11 @@ class BeatBoxLoad(private val assets: AssetManager, private val soundPool: Sound
     //uploading sounds to SoundPool
     private fun load(sound: Sound) {
         val afd: AssetFileDescriptor = assets.openFd(sound.assetPath)
-        //soundPool.load(afd, 1) load the file into the SoundPool for later playback
-        //soundPool.load(...) returns an int type indicator
-        val soundId = soundPool.load(afd, 1)
-        sound.soundId = soundId
+        try {
+            val soundId = soundPool.load(afd, 1)
+            sound.soundId = soundId
+        } finally {
+            afd.close()
+        }
     }
 }
