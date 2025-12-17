@@ -5,6 +5,8 @@ import android.graphics.BitmapFactory
 import android.media.SoundPool
 import android.net.Uri
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuItem
@@ -19,6 +21,9 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.recyclerview.widget.RecyclerView
 import com.dgioto.beatbox.databinding.ActivityMainBinding
 import com.dgioto.beatbox.databinding.ListItemSoundBinding
+import com.skydoves.balloon.ArrowOrientation
+import com.skydoves.balloon.Balloon
+import com.skydoves.balloon.BalloonAnimation
 import com.squareup.picasso.Picasso
 import com.squareup.picasso.RequestCreator
 
@@ -90,6 +95,33 @@ class MainActivity : AppCompatActivity(), LifecycleOwner {
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.main_menu, menu)
+
+        // Создаем и настраиваем подсказку
+        val balloon = Balloon.Builder(this)
+            .setArrowSize(10)
+            .setArrowOrientation(ArrowOrientation.TOP) // Стрелка сверху (укажет на кнопку)
+            .setIsVisibleArrow(true)
+            .setPadding(12)
+            .setMarginRight(20)
+            .setCornerRadius(8f)
+            .setTextSize(15f)
+            .setText(getString(R.string.leave_a_review))
+            .setTextColorResource(android.R.color.black)
+            .setBackgroundColorResource(android.R.color.white)
+            .setBalloonAnimation(BalloonAnimation.ELASTIC)
+            .setLifecycleOwner(this) // Подсказка сама удалится при закрытии активити
+            .build()
+
+        // Запускаем таймер на 10 секунд
+        Handler(Looper.getMainLooper()).postDelayed({
+            // Находим View кнопки меню. В Toolbar ID пункта меню соответствует ID View.
+            val rateItemView = findViewById<View>(R.id.rate_the_app)
+            rateItemView?.let {
+                // Показываем подсказку под кнопкой (alignBottom)
+                balloon.showAlignBottom(it)
+            }
+        }, 10000)
+
         return true
     }
 

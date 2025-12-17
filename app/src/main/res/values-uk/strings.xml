@@ -5,4 +5,5 @@
     <string name="qr_code_text">Відскануйте QR-код за допомогою програми для читання QR-кодів</string>
     <string name="share">Поділитись</string>
     <string name="rate_the_app">Оцінити програму</string>
+    <string name="leave_a_review">Залишить будь ласка відгук</string>
 </resources>
